@@ -1,0 +1,92 @@
+const ESTADO_PROCESSO
+Inserir campo Ativo tipo Bool e um campo text Descrição
+
+"Inicial" = 1
+"Recurso" = 2
+
+const MOTIVACAO
+Inserir campo Ativo tipo Bool e um campo text Descrição
+
+"Manifestacao" = 1
+"Solicitação de Informação" = 2
+
+const TIPO_MANIFESTACAO
+Inserir campo Ativo tipo Bool e um campo text Descrição
+
+"Sugestão" 6
+"Elogio" 7
+"Solicitação" 8
+"Reclamação" 9
+"Solicitação de Informação" 21
+"Denúncia" 13
+"Denúncia Fake News" 41
+
+const SITUACAO
+Inserir campo Ativo tipo Bool e um campo text Descrição
+
+'Aberta' 1
+'Em Andamento' 2
+'Compartilhada' 3
+'Respondida do Compartilhamento' 4
+'Respondida da Porrogação' 5
+'Aguardando Porrogação' 6
+'Pré-Concluída'7
+'Concluída' 8
+'Bloqueada' 10
+'Recurso' 11
+
+
+Secretarias
+Inserir campo Ativo tipo Bool
+
+"Secretaria do Planejamento e Gestão" "SEPLAG"
+"Secretaria do Urbanismo e Meio Ambiente" "SEUMA"
+"Procuradoria Geral do Município" "PGM"
+"Gabinete do Prefeito" "GABPREF"
+"Gabinete Vice Prefeitura" "GABVICE"
+"Secretaria de Educação" "SME"
+"Secretaria da Saúde" "SMS"
+"Secretaria da Juventude, Esporte e Lazer" "SECJEL"
+"Secretaria das Finanças" "SEFIN"
+"Secretaria de Trabalho e Desenvolvimento Econômico" "STDE"
+"Secretaria dos Direitos Humanos, Habitação e Assist. Social" "SEDHAS"
+"Agência Municipal do Meio Ambiente" "AMA"
+"Secretaria de Serviços Públicos" "SESEP"
+"Secretaria de Infraestrutura" "SEINF"
+"Secretaria da Segurança Cidadã" "SESEC"
+"Secretaria da Cultura e Turismo" "SECULT"
+"Secretaria do Trânsito e Transportes" "SETRAN"
+"Controladoria e Ouvidoria geral do Município" "CGM"
+"Central de Licitações" "CELIC"
+"Serviço Autônomo de Água e Esgoto de Sobral" "SAAE"
+"Outros" "outros"
+"Todas as secretarias" "Todas as SECs"
+
+Manifestação
+
+$table->increments('id');
+$table->string('protocolo')->nullable(false);
+$table->string('senha')->nullable(false);
+$table->integer('id_situacao');
+$table->integer('id_tipo_manifestacao');
+$table->integer('id_estado_processo');
+$table->integer('id_motivacao');
+$table->text('manifestacao');
+
+$table->text('contextualizacao')->nullable();
+$table->text('providencia_adotada')->nullable();
+$table->text('conclusao')->nullable();
+
+$table->dateTime('data_finalizacao')->nullable();
+$table->timestamps();
+$table->softDeletes();
+
+
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+<script src="{{ asset('js/fontawesome.js') }}"></script>
+
+$table->increments('id');
+$table->string('secretaria');
+$table->string('sigla');
+$table->bool('ativo');
+$table->timestamps();
